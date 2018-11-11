@@ -1,0 +1,10 @@
+#INSTALL CODEDEPLOY AGENT
+cd /home/ec2-user
+wget https://aws-codedeploy-us-east-1.s3.amazonaws.com/latest/install
+chmod +x ./install
+./install auto
+
+
+
+Code Deploy
+#2) Install Tomcat on the EC2 instance
