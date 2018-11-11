@@ -6,7 +6,7 @@ aws --profile yash iam create-role --role-name jenkins-server-role \
 --assume-role-policy-document file://cloudformation/access/jenkins-role-policy/aws-jenkins-server-role.json
 
 #CREATE NEW VERSION OF POLICY
-aws iam create-policy-version --policy-arn arn:aws:iam::094853031708:policy/jenkins-server-access-policy \
+aws iam create-policy-version --policy-arn arn:aws:iam::ACC_NUMBER:policy/jenkins-server-access-policy \
 --policy-document file://cloudformation/access/jenkins-role-policy/aws-jenkins-access-policy.json --set-as-default
 
 
