@@ -2,24 +2,24 @@
 aws cloudformation validate-template --template-body file://cloudformation/infra/jenkins-server/aws-jenkins-server-with-asg.json
 
 #Creaate cloudformation
-aws --profile yash cloudformation create-stack --stack-name ec2-web-server-asg --template-body \
+aws --profile {local-profile-name} cloudformation create-stack --stack-name ec2-web-server-asg --template-body \
 file://cloudformation/infra/jenkins-server/aws-jenkins-server-with-asg.json --capabilities CAPABILITY_NAMED_IAM \
 --parameters file://cloudformation/infra/jenkins-server/parameters/aws-jenkins-server-asg-param.json
 
 #Execute this command if you want to UPDATE STACK
-aws --profile yash cloudformation update-stack --stack-name ec2-web-server-asg --template-body \
+aws --profile {local-profile-name} cloudformation update-stack --stack-name ec2-web-server-asg --template-body \
 file://cloudformation/infra/jenkins-server/aws-jenkins-server-with-asg.json --capabilities CAPABILITY_NAMED_IAM \
 --parameters file://cloudformation/infra/jenkins-server/parameters/aws-jenkins-server-asg-param.json
 
 #DESCRIBE STACK CREATION EVENTS
-aws --profile yash cloudformation describe-stack-events \
+aws --profile {local-profile-name} cloudformation describe-stack-events \
 --stack-name ec2-web-server-asg \
 --query "StackEvents[].[{Resource:LogicalResourceId,Status:ResourceStatus,Reason:ResourceStatusReason}]" \
 --output table
 
 #WAIT FOR STACK CREATION
-aws --profile yash cloudformation wait stack-create-complete --stack-name ec2-web-server-asg
+aws --profile {local-profile-name} cloudformation wait stack-create-complete --stack-name ec2-web-server-asg
 
 #DELETE STACK
-aws --profile yash cloudformation delete-stack --stack-name ec2-web-server-asg
+aws --profile {local-profile-name} cloudformation delete-stack --stack-name ec2-web-server-asg
 
