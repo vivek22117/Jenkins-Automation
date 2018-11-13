@@ -8,6 +8,7 @@ pipeline {
         string(name: 'ROUTETWO', defaultValue: 'vpc-private-routing-by-vivek', description: 'worspace to use in Terraform')
         string(name: 'JENKINS', defaultValue: 'ec2-jenkins-master-by-vivek', description: 'worspace to use in Terraform')
         string(name: 'JSERVER', defaultValue: 'ec2-web-server-asg', description: 'RDS for Web Server')
+        string(name: 'REGION', defaultValue: 'us-east-1', description: 'RDS for Web Server')
     }
     stages {
         stage('delete-all-stacks') {
